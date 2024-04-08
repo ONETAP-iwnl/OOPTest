@@ -12,5 +12,10 @@ namespace OOP
         {
             // Дополнительная инициализация для карпа
         }
+
+        public override void Eat(Fish prey)
+        {
+            
+        }
     }
 }

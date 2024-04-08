@@ -15,7 +15,6 @@ namespace OOP
         public float MaxFoodBiomass { get; set; }
         public float CurrentFoodBiomass { get; set; }
         public float DailyFoodGrowth { get; set; }
-
         private readonly Random random;
 
 
@@ -24,21 +23,19 @@ namespace OOP
             { "Carp", 0.5f },
             { "Perch", 1.0f },
             { "Pike", 2.0f }
-        }; // коллекция по биомассе рыбы
+        }; //коллекция по биомассе рыб
 
         public Pond(float maxFishBiomass, float maxFoodBiomass, float dailyFoodGrowth)
         {
-            MaxFishBiomass = maxFishBiomass;
-            CurrentFishBiomass = 0;
-            TotalFishCount = 0;
-            FishCountByType = new Dictionary<string, int>();
-            MaxFoodBiomass = maxFoodBiomass;
-            CurrentFoodBiomass = maxFoodBiomass / 2; // начальное количество корма - половина максимального
-            DailyFoodGrowth = dailyFoodGrowth;
-            random = new Random();
+            this.MaxFishBiomass = maxFishBiomass;
+            this.CurrentFishBiomass = 0;
+            this.TotalFishCount = 0;
+            this.FishCountByType = new Dictionary<string, int>();
+            this.MaxFoodBiomass = maxFoodBiomass;
+            this.CurrentFoodBiomass = maxFoodBiomass / 2; //начальное количество корма - половина максимального
+            this.DailyFoodGrowth = dailyFoodGrowth;
+            this.random = new Random();
         }
-
-        
         public void AddFish(string fishType, int count)
         {
             if (!FishCountByType.ContainsKey(fishType))
@@ -52,20 +49,18 @@ namespace OOP
 
             TotalFishCount += count;
         }
-
-        
         public void SimulateDay()
         {
-            // копирую коллекцию для итерации симуляции дня
+            //копирую коллекцию для итерации симуляции дня
             var fishTypes = new List<string>(FishCountByType.Keys);
 
             //хищники
             foreach (var fishType in fishTypes)
             {
-                if (fishType == "Pike") // щука
+                if (fishType == "Pike") //щука
                 {
-                    float eatenFish = random.Next(0, 11) / 100.0f * CurrentFishBiomass; // количество съеденной рыбы
-                    CurrentFishBiomass -= eatenFish; // уменьшаем биомассу рыбы
+                    float eatenFish = random.Next(0, 11) / 100.0f * CurrentFishBiomass; //количество съеденной рыбы
+                    CurrentFishBiomass -= eatenFish; //уменьшаем биомассу рыбы
                 }
             }
 
@@ -73,22 +68,21 @@ namespace OOP
             float totalFishFoodNeeded = 0;
             foreach (var fishType in fishTypes)
             {
-                if (fishType != "Pike") // если не щука
+                if (fishType != "Pike") //если не щука
                 {
-                    totalFishFoodNeeded += FishCountByType[fishType] * FishCountByType[fishType] * 0.05f; // общее количество корма
+                    totalFishFoodNeeded += FishCountByType[fishType] * FishCountByType[fishType] * 0.05f; //общее количество корма
                 }
             }
             if (CurrentFoodBiomass >= totalFishFoodNeeded)
             {
-                CurrentFoodBiomass -= totalFishFoodNeeded; // уменьшаем количество корма
+                CurrentFoodBiomass -= totalFishFoodNeeded; //уменьшаем количество корма
             }
             else
             {
-                
                 float deathFraction = 1 - (CurrentFoodBiomass / totalFishFoodNeeded); //если нехватает корма то чатсь рыбы умирает от голода
                 foreach (var fishType in fishTypes)
                 {
-                    if (fishType != "Pike") // если не щука
+                    if (fishType != "Pike") //если не щука
                     {
                         FishCountByType[fishType] -= (int)Math.Round(FishCountByType[fishType] * deathFraction); //расчитываем количество умершей рыбы
                         TotalFishCount -= (int)Math.Round(FishCountByType[fishType] * deathFraction);
@@ -97,35 +91,31 @@ namespace OOP
                 CurrentFoodBiomass = 0;
             }
 
-            // увеличение количества корма
-            CurrentFoodBiomass = Math.Min(MaxFoodBiomass, CurrentFoodBiomass + DailyFoodGrowth);
 
-            // проверка смертности рыб
+            //увеличение количества корма
+            CurrentFoodBiomass = Math.Min(MaxFoodBiomass, CurrentFoodBiomass + DailyFoodGrowth);
+            //проверка смертности рыб
             foreach (var fishType in fishTypes)
             {
                 for (int i = 0; i < FishCountByType[fishType]; i++)
                 {
-                    if (random.Next(100) < 10) // Вероятность смерти - 10%
+                    if (random.Next(100) < 10) //вероятность смерти - 10%
                     {
                         FishCountByType[fishType]--;
                         TotalFishCount--;
                     }
                 }
             }
-
             CurrentFishBiomass = 0; //расчет общей биомассы рыбы по типам
             foreach (var fishType in FishCountByType.Keys)
             {
                 float fishTypeBiomass = FishCountByType[fishType] * FishBiomass[fishType];
                 CurrentFishBiomass += fishTypeBiomass;
             }
-
             Console.WriteLine($"Статистика пруда:");
             Console.WriteLine($"Текущая биомасса рыбы: {CurrentFishBiomass}");
             Console.WriteLine($"Текущее количество рыбы: {TotalFishCount}");
             Console.WriteLine($"Текущая биомасса корма: {CurrentFoodBiomass}");
         }
-
     }
-    
 }

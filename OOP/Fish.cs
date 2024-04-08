@@ -8,7 +8,6 @@ namespace OOP
 {
     public abstract class Fish
     {
-       // Свойства рыбы
         public float Weight { get; set; }
         public int CurrentAge { get; set; }
         public int MaxAge { get; set; }
@@ -16,7 +15,7 @@ namespace OOP
         public int MaxDaysWithoutFood { get; set; }
         public int DaysWithoutFood { get; set; }
 
-        // Конструктор
+        
         public Fish(float weight, int maxAge, int maxDaysWithoutFood)
         {
             Weight = weight;
@@ -27,10 +26,9 @@ namespace OOP
             DaysWithoutFood = 0;
         }
 
-        // Метод для питания рыбы
-        public void Eat(float foodAmount)
+        public virtual void Eat(Fish prey)
         {
-            // Реализация питания рыбы
+           
         }
 
     }
