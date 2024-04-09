@@ -64,6 +64,20 @@ namespace OOP
                 }
             }
 
+            foreach (var fishType in fishTypes)
+            {
+                if (fishType == "Perch") // окунь
+                {
+                    // Рыба
+                    float eatenFish = random.Next(0, 11) / 100.0f * CurrentFishBiomass; // количество съеденной рыбы
+                    CurrentFishBiomass -= eatenFish; // уменьшаем биомассу рыбы
+
+                    // Корм
+                    float eatenFood = Math.Min(CurrentFoodBiomass, FishCountByType[fishType] * FishCountByType[fishType] * 0.05f); // количество съеденного корма
+                    CurrentFoodBiomass -= eatenFood; // уменьшаем количество корма
+                }
+            }
+
             //травоядные
             float totalFishFoodNeeded = 0;
             foreach (var fishType in fishTypes)
@@ -94,6 +108,7 @@ namespace OOP
 
             //увеличение количества корма
             CurrentFoodBiomass = Math.Min(MaxFoodBiomass, CurrentFoodBiomass + DailyFoodGrowth);
+
             //проверка смертности рыб
             foreach (var fishType in fishTypes)
             {
