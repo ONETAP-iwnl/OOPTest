@@ -12,3 +12,10 @@ C:\Users\romka\source\repos\ONETAP-iwnl\OOPTest\OOP\obj\Debug\OOP.csproj.Assembl
 C:\Users\romka\source\repos\ONETAP-iwnl\OOPTest\OOP\obj\Debug\OOP.csproj.CoreCompileInputs.cache
 C:\Users\romka\source\repos\ONETAP-iwnl\OOPTest\OOP\obj\Debug\OOP.exe
 C:\Users\romka\source\repos\ONETAP-iwnl\OOPTest\OOP\obj\Debug\OOP.pdb
+C:\Users\ромка\Source\Repos\ONETAP-iwnl\OOPTest\OOP\bin\Debug\OOP.exe.config
+C:\Users\ромка\Source\Repos\ONETAP-iwnl\OOPTest\OOP\bin\Debug\OOP.exe
+C:\Users\ромка\Source\Repos\ONETAP-iwnl\OOPTest\OOP\bin\Debug\OOP.pdb
+C:\Users\ромка\Source\Repos\ONETAP-iwnl\OOPTest\OOP\obj\Debug\OOP.csproj.AssemblyReference.cache
+C:\Users\ромка\Source\Repos\ONETAP-iwnl\OOPTest\OOP\obj\Debug\OOP.csproj.CoreCompileInputs.cache
+C:\Users\ромка\Source\Repos\ONETAP-iwnl\OOPTest\OOP\obj\Debug\OOP.exe
+C:\Users\ромка\Source\Repos\ONETAP-iwnl\OOPTest\OOP\obj\Debug\OOP.pdb
