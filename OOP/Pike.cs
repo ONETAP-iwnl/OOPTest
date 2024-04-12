@@ -8,7 +8,7 @@ namespace OOP
 {
     public class Pike: Fish //щука (ест только рыбу)
     {
-        public Pike(float weight) : base(weight, 15, 4)
+        public Pike(float weight) : base(weight, 15, 2)
         {
             
         }
@@ -17,9 +17,12 @@ namespace OOP
         {
             if (prey is СrucianСarp || prey is Perch)
             {
-                float eatenMass = prey.Weight * 0.2f; // 20% от массы съеденной рыбы
-                Weight += eatenMass * 0.1f; //увеличиваем биомассу текущей рыбы на 10% от массы съеденной рыбы
+                float eatenMass = prey.Weight * 0.1f; // 10% от массы съеденной рыбы
+                prey.Weight -= eatenMass; // Уменьшаем вес съеденной рыбы у жертвы
+                this.Weight += eatenMass * 0.5f; // Увеличиваем биомассу щуки в 2 раза
             }
         }
+
+        
     }
 }

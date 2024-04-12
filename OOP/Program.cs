@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OOP.OOP;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +11,7 @@ namespace OOP
     {
         static void Main(string[] args)
         {
-            Pond pond = new Pond(1000, 2000, 500);
-
-            // Добавляем пользователем количество рыб каждого вида
+            Pond pond = new Pond(1000, 2000, 900);
             Console.WriteLine("Введите количество рыб каждого вида:");
 
             foreach (var fishType in Pond.FishBiomass.Keys)

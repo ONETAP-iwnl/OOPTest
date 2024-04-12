@@ -17,8 +17,9 @@ namespace OOP
         {
             if (prey is СrucianСarp || prey is Perch)
             {
-                float eatenMass = prey.Weight * 0.1f; // 10% от массы съеденной рыбы
-                Weight += eatenMass * 0.1f; //увеличиваем биомассу текущей рыбы на 10% от массы съеденной рыбы
+                float eatenMass = prey.Weight * 0.05f; // 5% от массы съеденной рыбы
+                prey.Weight -= eatenMass; // Уменьшаем вес съеденной рыбы у жертвы
+                this.Weight += eatenMass * 0.5f; 
             }
         }
     }
